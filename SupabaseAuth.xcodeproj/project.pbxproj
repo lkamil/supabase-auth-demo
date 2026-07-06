@@ -6,13 +6,32 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AE328E982FFB9E1100CA7FB0 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = AE328E972FFB9E1100CA7FB0 /* Auth */; };
+		AE328ED82FFBAD2C00CA7FB0 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AE328ED72FFBAD2C00CA7FB0 /* Secrets.xcconfig */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		AE328E842FFB9C3F00CA7FB0 /* SupabaseAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SupabaseAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE328ED72FFBAD2C00CA7FB0 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AE328EDA2FFBAFB100CA7FB0 /* Exceptions for "SupabaseAuth" folder in "SupabaseAuth" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AE328E832FFB9C3F00CA7FB0 /* SupabaseAuth */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AE328E862FFB9C3F00CA7FB0 /* SupabaseAuth */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AE328EDA2FFBAFB100CA7FB0 /* Exceptions for "SupabaseAuth" folder in "SupabaseAuth" target */,
+			);
 			path = SupabaseAuth;
 			sourceTree = "<group>";
 		};
@@ -23,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE328E982FFB9E1100CA7FB0 /* Auth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,6 +52,7 @@
 		AE328E7B2FFB9C3F00CA7FB0 = {
 			isa = PBXGroup;
 			children = (
+				AE328ED72FFBAD2C00CA7FB0 /* Secrets.xcconfig */,
 				AE328E862FFB9C3F00CA7FB0 /* SupabaseAuth */,
 				AE328E852FFB9C3F00CA7FB0 /* Products */,
 			);
@@ -65,6 +86,7 @@
 			);
 			name = SupabaseAuth;
 			packageProductDependencies = (
+				AE328E972FFB9E1100CA7FB0 /* Auth */,
 			);
 			productName = SupabaseAuth;
 			productReference = AE328E842FFB9C3F00CA7FB0 /* SupabaseAuth.app */;
@@ -94,6 +116,9 @@
 			);
 			mainGroup = AE328E7B2FFB9C3F00CA7FB0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AE328E962FFB9E1100CA7FB0 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AE328E852FFB9C3F00CA7FB0 /* Products */;
 			projectDirPath = "";
@@ -109,6 +134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE328ED82FFBAD2C00CA7FB0 /* Secrets.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +153,7 @@
 /* Begin XCBuildConfiguration section */
 		AE328E8D2FFB9C4000CA7FB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE328ED72FFBAD2C00CA7FB0 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -191,6 +218,7 @@
 		};
 		AE328E8E2FFB9C4000CA7FB0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE328ED72FFBAD2C00CA7FB0 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -253,9 +281,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NQADRZJC42;
+				DEVELOPMENT_TEAM = Y4Q5Y642MK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SupabaseAuth/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -285,9 +314,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NQADRZJC42;
+				DEVELOPMENT_TEAM = Y4Q5Y642MK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SupabaseAuth/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -332,6 +362,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AE328E962FFB9E1100CA7FB0 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AE328E972FFB9E1100CA7FB0 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE328E962FFB9E1100CA7FB0 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AE328E7C2FFB9C3F00CA7FB0 /* Project object */;
 }
