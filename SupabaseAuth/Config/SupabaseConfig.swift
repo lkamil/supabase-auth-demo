@@ -6,25 +6,19 @@
 //
 
 import Foundation
-import Auth
+import Supabase
+	
 
 
 enum SupabaseConfig {
-    static var authClient: AuthClient = {
+    static var client: SupabaseClient = {
         guard
             let urlString = Bundle.main.infoDictionary?["SUPABASE_URL"] as? String,
-            let projectURL = URL(string: urlString),
-            let anonKey = Bundle.main.infoDictionary?["SUPABASE_PUBLISHABLE_KEY"] as? String
+            let url = URL(string: urlString),
+            let key = Bundle.main.infoDictionary?["SUPABASE_ANON_KEY"] as? String
         else {
             fatalError("Missing Supabase configuration in Info.plist")
         }
-
-        return AuthClient(
-            url: projectURL.appendingPathComponent("auth/v1"),
-            headers: ["apikey": anonKey],
-            flowType: .pkce,
-            localStorage: KeychainLocalStorage(service: "com.yourapp.bundleid.supabase"),
-            logger: nil
-        )
+        return SupabaseClient(supabaseURL: url, supabaseKey: key)
     }()
 }

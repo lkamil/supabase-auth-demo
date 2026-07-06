@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Auth
+import Supabase
 
 
 // MARK: - AuthServiceRepresentable
@@ -39,9 +39,9 @@ enum AuthServiceError: Error {
 
 final class AuthService {
     
-    private let client: AuthClient
+    private let client: SupabaseClient
 
-    init(client: AuthClient) {
+    init(client: SupabaseClient) {
         self.client = client
     }
 }
@@ -52,19 +52,19 @@ final class AuthService {
 extension AuthService: AuthServiceRepresentable {
     
     var authStateChanges: AsyncStream<(event: AuthChangeEvent, session: Session?)> {
-        client.authStateChanges
+        client.auth.authStateChanges
     }
     
     func signIn(email: String, password: String) async throws -> Session {
-        try await client.signIn(email: email, password: password)
+        try await client.auth.signIn(email: email, password: password)
     }
     
     func signOut() async throws {
-        try await client.signOut()
+        try await client.auth.signOut()
     }
     
     func signUp(email: String, password: String) async throws -> Session {
-        let response = try await client.signUp(email: email, password: password)
+        let response = try await client.auth.signUp(email: email, password: password)
         // signUp returns a session only if email confirmation is off;
         // handle nil session upstream in the Manager if you require confirmation
         guard let session = response.session else {

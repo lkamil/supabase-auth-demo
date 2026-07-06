@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE328E982FFB9E1100CA7FB0 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = AE328E972FFB9E1100CA7FB0 /* Auth */; };
 		AE328ED82FFBAD2C00CA7FB0 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AE328ED72FFBAD2C00CA7FB0 /* Secrets.xcconfig */; };
+		AEEC04CB2FFBDFC00063422F /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = AEEC04CA2FFBDFC00063422F /* Supabase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE328E982FFB9E1100CA7FB0 /* Auth in Frameworks */,
+				AEEC04CB2FFBDFC00063422F /* Supabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +86,7 @@
 			);
 			name = SupabaseAuth;
 			packageProductDependencies = (
-				AE328E972FFB9E1100CA7FB0 /* Auth */,
+				AEEC04CA2FFBDFC00063422F /* Supabase */,
 			);
 			productName = SupabaseAuth;
 			productReference = AE328E842FFB9C3F00CA7FB0 /* SupabaseAuth.app */;
@@ -117,7 +117,7 @@
 			mainGroup = AE328E7B2FFB9C3F00CA7FB0;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				AE328E962FFB9E1100CA7FB0 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				AEEC04C92FFBDFC00063422F /* XCRemoteSwiftPackageReference "supabase-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AE328E852FFB9C3F00CA7FB0 /* Products */;
@@ -364,9 +364,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AE328E962FFB9E1100CA7FB0 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+		AEEC04C92FFBDFC00063422F /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/supabase/supabase-swift";
+			repositoryURL = "https://github.com/supabase/supabase-swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.5.1;
@@ -375,10 +375,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AE328E972FFB9E1100CA7FB0 /* Auth */ = {
+		AEEC04CA2FFBDFC00063422F /* Supabase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AE328E962FFB9E1100CA7FB0 /* XCRemoteSwiftPackageReference "supabase-swift" */;
-			productName = Auth;
+			package = AEEC04C92FFBDFC00063422F /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
