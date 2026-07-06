@@ -15,7 +15,7 @@ enum SupabaseConfig {
         guard
             let urlString = Bundle.main.infoDictionary?["SUPABASE_URL"] as? String,
             let url = URL(string: urlString),
-            let key = Bundle.main.infoDictionary?["SUPABASE_ANON_KEY"] as? String
+            let key = Bundle.main.infoDictionary?["SUPABASE_PUBLISHABLE_KEY"] as? String
         else {
             fatalError("Missing Supabase configuration in Info.plist")
         }

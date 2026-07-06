@@ -11,7 +11,7 @@ import SwiftUI
 struct SupabaseAuthApp: App {
     
     @State private var authManager = AuthManager(
-        service: AuthService(client: SupabaseConfig.authClient),
+        service: AuthService(client: SupabaseConfig.client),
         mapper: AuthMapper()
     )
     
