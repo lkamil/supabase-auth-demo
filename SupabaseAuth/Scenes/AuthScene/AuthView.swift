@@ -16,7 +16,7 @@ struct AuthView: View {
     @State private var isSubmitting = false
     @State private var errorMessage: String?
     
-    @State private var authConfig: AuthConfig = .signUp
+    @State private var authConfig: Config = .signUp
 
     var body: some View {
         VStack(spacing: 16) {
@@ -60,8 +60,8 @@ struct AuthView: View {
             .buttonStyle(.borderedProminent)
             .disabled(isSubmitting || email.isEmpty || password.isEmpty)
 
-            Button(authConfig.switchText) {
-                authConfig = .signIn == authConfig ? .signUp : .signIn
+            Button(authConfig.toggleText) {
+                authConfig.toggle()
             }
                 .font(.footnote)
         }
@@ -69,44 +69,8 @@ struct AuthView: View {
     }
 }
 
-enum AuthConfig {
-    case signIn
-    case signUp
-}
 
-extension AuthConfig {
-    
-    var headline: String {
-        switch self {
-        case .signIn:
-            "Sign In"
-            
-        case .signUp:
-            "Create Account"
-        }
-    }
-    
-    var text: String {
-        switch self {
-        case .signIn:
-            "Sign In"
-            
-        case .signUp:
-            "Sign Up"
-        }
-    }
-    
-    var switchText: String {
-        switch self {
-        case .signIn:
-            "Don't have an account? Sign Up"
-
-        case .signUp:
-            "Already have an account? Sign In"
-        }
-    }
-}
-
+// MARK: - Helper
 
 private extension AuthView {
 

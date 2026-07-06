@@ -16,7 +16,7 @@ struct RootView: View {
         if authManager.isLoading {
             ProgressView()
         } else if authManager.currentUser != nil {
-            HomeView()
+            NotepadView()
         } else {
             AuthView()
         }
