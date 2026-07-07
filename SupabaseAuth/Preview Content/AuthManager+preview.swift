@@ -18,6 +18,10 @@ extension AuthManager {
 }
 
 final class MockAuthService: AuthServiceRepresentable {
+    
+    var authStateChanges: AsyncStream<(event: AuthChangeEvent, session: Session?)> {
+        AsyncStream { $0.finish() }
+    }
 
     func signUp(email: String, password: String, username: String) async throws -> Session {
         fatalError("MockAuthService.signUp not implemented — this is preview-only")
@@ -26,7 +30,6 @@ final class MockAuthService: AuthServiceRepresentable {
         fatalError("MockAuthService.signIn not implemented — this is preview-only")
     }
     func signOut() async throws {}
-    var authStateChanges: AsyncStream<(event: AuthChangeEvent, session: Session?)> {
-        AsyncStream { $0.finish() }
-    }
+
+    func updateUsername(_ username: String) async throws {}
 }

@@ -18,6 +18,7 @@ protocol AuthServiceRepresentable {
     func signIn(email: String, password: String) async throws -> Session
     func signOut() async throws
     func signUp(email: String, password: String, username: String) async throws -> Session
+    func updateUsername(_ username: String) async throws
 }
 
 
@@ -64,6 +65,7 @@ extension AuthService: AuthServiceRepresentable {
     }
     
     func signUp(email: String, password: String, username: String) async throws -> Session {
+
         let response = try await client.auth.signUp(
             email: email,
             password: password,
@@ -75,5 +77,15 @@ extension AuthService: AuthServiceRepresentable {
             throw AuthServiceError.confirmationRequired
         }
         return session
+    }
+    
+    func updateUsername(_ username: String) async throws {
+
+        let userId = try await client.auth.session.user.id
+        
+        try await client
+            .from("profiles")
+            .upsert(["id": userId.uuidString.lowercased(), "username": username])
+            .execute()
     }
 }

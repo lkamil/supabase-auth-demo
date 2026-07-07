@@ -38,6 +38,11 @@ import Auth
         try await service.signOut()
         currentUser = nil
     }
+    
+    func update(_ username: String) async throws {
+        try await service.updateUsername(username)
+        currentUser?.username = username
+    }
 }
 
 

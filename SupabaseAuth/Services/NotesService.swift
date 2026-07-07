@@ -21,7 +21,7 @@ protocol NotesServiceRepresentable {
     func fetchImages(noteId: UUID) async throws -> [APINoteImageModel]
     func uploadImage(data: Data, noteId: UUID) async throws -> APINoteImageModel
     func deleteImage(id: UUID, storagePath: String) async throws
-	    func imageURL(for storagePath: String) async throws -> URL
+    func imageURL(for storagePath: String) async throws -> URL
 }
 
 

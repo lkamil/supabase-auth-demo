@@ -4,13 +4,14 @@
 //
 //  Created by Laila Kamil on 07.07.26.
 //
-
 import SwiftUI
 
 struct SettingsScene: View {
     
     @Environment(AuthManager.self) private var authManager
     @State private var viewState: ViewState = .idle
+    @State private var username = ""
+    @State private var didUpdateUsername = false
     
     var body: some View {
         
@@ -45,12 +46,41 @@ extension SettingsScene {
 private extension SettingsScene {
 
     var content: some View {
-        Button {
-            Task {
-                await signout()
+        Form {
+            Section("Username") {
+                HStack {
+                    TextField(authManager.currentUser?.username ?? "Username", text: $username)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                        .onChange(of: username) { _, _ in
+                            didUpdateUsername = false
+                        }
+                    
+                    Button("Save") {
+                        Task {
+                            await updateUsername()
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                    .disabled(username.isEmpty || username == authManager.currentUser?.username)
+                }
+                
+                if didUpdateUsername {
+                    Text("Successfully updated username")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
             }
-        } label: {
-            Text("Sign Out")
+            
+            Section {
+                Button {
+                    Task {
+                        await signout()
+                    }
+                } label: {
+                    Text("Sign Out")
+                }
+            }
         }
     }
     
@@ -82,6 +112,19 @@ private extension SettingsScene {
         
         do {
             try await authManager.signOut()
+        } catch {
+            viewState = .error(error.localizedDescription)
+        }
+    }
+    
+    func updateUsername() async {
+        
+        defer { viewState = .idle }
+        
+        do {
+            try await authManager.update(username)
+            didUpdateUsername = true
+            username = ""
         } catch {
             viewState = .error(error.localizedDescription)
         }
