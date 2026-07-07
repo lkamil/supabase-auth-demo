@@ -21,6 +21,13 @@ protocol AuthMapping {
 struct AuthMapper: AuthMapping {
     
     func map(session: Session) -> UserModel {
-        UserModel(id: session.user.id, email: session.user.email)
+
+        let username = session.user.userMetadata["username"]?.stringValue
+
+        return UserModel(
+            id: session.user.id,
+            email: session.user.email,
+            username: username
+        )
     }
 }

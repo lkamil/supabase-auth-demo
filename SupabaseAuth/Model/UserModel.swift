@@ -11,4 +11,5 @@ import Foundation
 struct UserModel: Equatable {
     let id: UUID
     let email: String?
+    let username: String?
 }

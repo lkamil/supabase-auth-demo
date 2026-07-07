@@ -88,8 +88,8 @@ private extension NotepadView {
     
     @ViewBuilder
     var ownerTag: some View {
-        if let email = authManager.currentUser?.email {
-            Text("\(email)'s Notepad")
+        if let name = authManager.currentUser?.username {
+            Text("\(name)'s Notepad")
                 .foregroundStyle(.secondary)
                 .font(.footnote)
         }

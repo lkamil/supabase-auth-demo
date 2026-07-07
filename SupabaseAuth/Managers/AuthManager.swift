@@ -24,8 +24,8 @@ import Auth
         observeAuthState()
     }
 
-    func signUp(email: String, password: String) async throws {
-        let session = try await service.signUp(email: email, password: password)
+    func signUp(email: String, password: String, username: String) async throws {
+        let session = try await service.signUp(email: email, password: password,  username: username)
         currentUser = mapper.map(session: session)
     }
 

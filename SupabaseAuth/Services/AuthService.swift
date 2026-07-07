@@ -17,7 +17,7 @@ protocol AuthServiceRepresentable {
     
     func signIn(email: String, password: String) async throws -> Session
     func signOut() async throws
-    func signUp(email: String, password: String) async throws -> Session
+    func signUp(email: String, password: String, username: String) async throws -> Session
 }
 
 
@@ -63,8 +63,12 @@ extension AuthService: AuthServiceRepresentable {
         try await client.auth.signOut()
     }
     
-    func signUp(email: String, password: String) async throws -> Session {
-        let response = try await client.auth.signUp(email: email, password: password)
+    func signUp(email: String, password: String, username: String) async throws -> Session {
+        let response = try await client.auth.signUp(
+            email: email,
+            password: password,
+            data: ["username": .string(username)]
+        )
         // signUp returns a session only if email confirmation is off;
         // handle nil session upstream in the Manager if you require confirmation
         guard let session = response.session else {

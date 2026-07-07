@@ -13,6 +13,7 @@ struct AuthView: View {
 
     @State private var email = ""
     @State private var password = ""
+    @State private var username = ""
     @State private var isSubmitting = false
     @State private var errorMessage: String?
     
@@ -22,6 +23,14 @@ struct AuthView: View {
         VStack(spacing: 16) {
             Text(authConfig.headline)
                 .font(.largeTitle.bold())
+            
+            if authConfig == .signUp {
+                TextField("Username", text: $username)
+                    .textContentType(.username)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .textFieldStyle(.roundedBorder)
+            }
 
             TextField("Email", text: $email)
                 .textContentType(.emailAddress)
@@ -92,7 +101,7 @@ private extension AuthView {
         defer { isSubmitting = false }
 
         do {
-            try await authManager.signUp(email: email, password: password)
+            try await authManager.signUp(email: email, password: password, username: username)
         } catch {
             errorMessage = error.localizedDescription
         }

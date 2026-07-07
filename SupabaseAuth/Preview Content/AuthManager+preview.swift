@@ -18,7 +18,8 @@ extension AuthManager {
 }
 
 final class MockAuthService: AuthServiceRepresentable {
-    func signUp(email: String, password: String) async throws -> Session {
+
+    func signUp(email: String, password: String, username: String) async throws -> Session {
         fatalError("MockAuthService.signUp not implemented — this is preview-only")
     }
     func signIn(email: String, password: String) async throws -> Session {

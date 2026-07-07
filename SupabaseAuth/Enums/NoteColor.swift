@@ -21,19 +21,19 @@ extension NoteColor {
     var value: Color {
         switch self {
         case .mint:
-            Color.mint
+            Color.Backgrounds.mint
             
         case .pink:
-            Color.pink
+            Color.Backgrounds.pink
             
         case .purple:
-            Color.purple
+            Color.Backgrounds.purple
             
         case .blue:
-            Color.blue
+            Color.Backgrounds.blue
             
         case .yellow:
-            Color.yellow
+            Color.Backgrounds.yellow
         }
     }
 }
