@@ -52,13 +52,23 @@ extension AuthView.Config {
         }
     }
     
+    var question: String {
+        switch self {
+        case .signIn:
+            "Don't have an account?"
+
+        case .signUp:
+            "Already have an account?"
+        }
+    }
+    
     var toggleText: String {
         switch self {
         case .signIn:
-            "Don't have an account? Sign Up"
+            "Sign Up"
 
         case .signUp:
-            "Already have an account? Sign In"
+            "Sign In"
         }
     }
 }

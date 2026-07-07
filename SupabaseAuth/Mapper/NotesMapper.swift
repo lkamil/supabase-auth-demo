@@ -11,7 +11,7 @@ import Foundation
 // MARK: - NotesMapping
 
 protocol NotesMapping {
-    func map(row: APINoteRowModel?) -> NoteModel
+    func map(row: APINoteModel, images: [NoteImageModel]) -> NoteModel
 }
 
 
@@ -19,10 +19,12 @@ protocol NotesMapping {
 
 struct NotesMapper: NotesMapping {
 
-    func map(row: APINoteRowModel?) -> NoteModel {
+    func map(row: APINoteModel, images: [NoteImageModel]) -> NoteModel {
         NoteModel(
-            content: row?.content ?? "",
-            color: row.flatMap { NoteColor(rawValue: $0.color) } ?? .yellow
+            id: row.id,
+            content: row.content,
+            color: NoteColor(rawValue: row.color) ?? .yellow,
+            images: images
         )
     }
 }

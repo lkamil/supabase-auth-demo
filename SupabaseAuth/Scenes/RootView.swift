@@ -16,12 +16,16 @@ struct RootView: View {
         if authManager.isLoading {
             ProgressView()
         } else if authManager.currentUser != nil {
-            NotepadView()
+            HomeScene()
+                .environment(authManager)
         } else {
             AuthView()
         }
     }
 }
+
+
+// MARK: - Preview
 
 #Preview {
     RootView()

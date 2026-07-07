@@ -17,7 +17,7 @@ struct AuthView: View {
     @State private var isSubmitting = false
     @State private var errorMessage: String?
     
-    @State private var authConfig: Config = .signUp
+    @State private var authConfig: Config = .signIn
 
     var body: some View {
         VStack(spacing: 16) {
@@ -69,10 +69,15 @@ struct AuthView: View {
             .buttonStyle(.borderedProminent)
             .disabled(isSubmitting || email.isEmpty || password.isEmpty)
 
-            Button(authConfig.toggleText) {
-                authConfig.toggle()
+            
+            HStack {
+                Text(authConfig.question)
+                
+                Button(authConfig.toggleText) {
+                    authConfig.toggle()
+                }
             }
-                .font(.footnote)
+            .font(.footnote)
         }
         .padding()
     }
