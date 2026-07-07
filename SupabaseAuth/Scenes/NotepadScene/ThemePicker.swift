@@ -14,14 +14,14 @@ struct ThemePicker: View {
 
     var body: some View {
         HStack(spacing: 8) {
-            ForEach(NoteColor.allCases, id: \.self) { option in
+            ForEach(NoteColor.allCases, id: \.self) { selection in
                 Circle()
-                    .fill(option.color)
+                    .fill(selection.value)
                     .frame(width: 20, height: 20)
                     .overlay(
-                        Circle().stroke(selected == option ? Color.black : Color.gray, lineWidth: 1)
+                        Circle().stroke(selected == selection ? Color.black : Color.gray, lineWidth: 1)
                     )
-                    .onTapGesture { onSelect(option) }
+                    .onTapGesture { onSelect(selection) }
             }
         }
     }

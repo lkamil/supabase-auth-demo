@@ -24,7 +24,7 @@ struct NotepadView: View {
     var body: some View {
 
         ZStack {
-            notesManager.note.color.color
+            notesManager.note.color.value
                 .ignoresSafeArea()
             
             VStack {

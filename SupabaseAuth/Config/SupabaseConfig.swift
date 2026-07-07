@@ -9,8 +9,8 @@ import Foundation
 import Supabase
 	
 
-
 enum SupabaseConfig {
+    
     static var client: SupabaseClient = {
         guard
             let urlString = Bundle.main.infoDictionary?["SUPABASE_URL"] as? String,
