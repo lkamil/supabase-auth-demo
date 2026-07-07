@@ -18,7 +18,6 @@ protocol NotesServiceRepresentable {
     func updateNote(id: UUID, content: String, color: String) async throws
     func deleteNote(id: UUID) async throws
 
-    func fetchImages(noteId: UUID) async throws -> [APINoteImageModel]
     func uploadImage(data: Data, noteId: UUID) async throws -> APINoteImageModel
     func deleteImage(id: UUID, storagePath: String) async throws
     func imageURL(for storagePath: String) async throws -> URL
@@ -42,7 +41,7 @@ extension NotesService: NotesServiceRepresentable {
     func fetchNotes() async throws -> [APINoteModel] {
         try await client
             .from("notes")
-            .select()
+            .select("*, note_images(*)")
             .order("created_at", ascending: false)
             .execute()
             .value
@@ -54,7 +53,8 @@ extension NotesService: NotesServiceRepresentable {
             id: UUID(),
             userId: userId,
             content: "",
-            color: NoteColor.yellow.rawValue
+            color: NoteColor.yellow.rawValue,
+            noteImages: []
         )
 
         return try await client
@@ -80,17 +80,6 @@ extension NotesService: NotesServiceRepresentable {
             .delete()
             .eq("id", value: id)
             .execute()
-    }
-
-    
-    func fetchImages(noteId: UUID) async throws -> [APINoteImageModel] {
-        try await client
-            .from("note_images")
-            .select()
-            .eq("note_id", value: noteId)
-            .order("created_at", ascending: true)
-            .execute()
-            .value
     }
     
     func uploadImage(data: Data, noteId: UUID) async throws -> APINoteImageModel {

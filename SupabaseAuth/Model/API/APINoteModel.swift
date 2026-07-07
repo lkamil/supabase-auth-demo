@@ -13,11 +13,14 @@ struct APINoteModel: Codable {
     let userId: UUID
     let content: String
     let color: String
+    var noteImages: [APINoteImageModel]
+
 
     enum CodingKeys: String, CodingKey {
         case id
         case userId = "user_id"
         case content
         case color
+        case noteImages = "note_images"
     }
 }

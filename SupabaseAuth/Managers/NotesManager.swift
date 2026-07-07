@@ -27,7 +27,7 @@ final class NotesManager {
 
 
 extension NotesManager {
-
+    
     func load() async {
         isLoading = true
         defer { isLoading = false }
@@ -35,7 +35,7 @@ extension NotesManager {
             let rows = try await service.fetchNotes()
             var loaded: [NoteModel] = []
             for row in rows {
-                let images = try await loadImages(noteId: row.id)
+                let images = try await resolveImageURLs(row.noteImages)
                 loaded.append(mapper.map(row: row, images: images))
             }
             notes = loaded
@@ -148,9 +148,8 @@ extension NotesManager {
 // MARK: - Helpers
 
 private extension NotesManager {
-
-    func loadImages(noteId: UUID) async throws -> [NoteImageModel] {
-        let rows = try await service.fetchImages(noteId: noteId)
+    
+    func resolveImageURLs(_ rows: [APINoteImageModel]) async throws -> [NoteImageModel] {
         var images: [NoteImageModel] = []
         for row in rows {
             let url = try await service.imageURL(for: row.storagePath)
